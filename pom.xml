@@ -5,11 +5,30 @@
     <artifactId>orientdb-docker-integration</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.19.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <orientdb-version>3.0.0-SNAPSHOT</orientdb-version>
     </properties>
+
     <dependencies>
 
         <dependency>
@@ -25,9 +44,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>com.orientechnologies</groupId>-->
-            <!--<artifactId>orientdb-gremlin</artifactId>-->
-            <!--<version>${orientdb-version}</version>-->
+        <!--<groupId>com.orientechnologies</groupId>-->
+        <!--<artifactId>orientdb-gremlin</artifactId>-->
+        <!--<version>${orientdb-version}</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -66,9 +85,7 @@
             <version>2.5</version>
         </dependency>
 
-
     </dependencies>
-
 
     <repositories>
         <repository>

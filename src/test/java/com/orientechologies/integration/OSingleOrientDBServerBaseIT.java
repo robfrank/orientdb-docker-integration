@@ -18,15 +18,14 @@ import java.nio.file.Paths;
 /**
  * Created by frank on 17/05/2017.
  */
-public class OSingleOrientDBServerBaseIT {
+public abstract class OSingleOrientDBServerBaseIT {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OSingleOrientDBServerBaseIT.class);
 
   @ClassRule
   public static GenericContainer container =
-      new GenericContainer(new ImageFromDockerfile("orientdb/orietdb-it", true)
+      new GenericContainer(new ImageFromDockerfile("orientdb/orietdb-it")
           .withFileFromPath("Dockerfile", Paths.get("./docker/Dockerfile"))
-
       )
           .withEnv("ORIENTDB_ROOT_PASSWORD", "root")
           .withExposedPorts(2480, 2424)
