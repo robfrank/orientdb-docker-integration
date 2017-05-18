@@ -1,0 +1,13 @@
+ALTER DATABASE DateTimeFormat "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+
+
+CREATE CLASS BV EXTENDS V;
+CREATE PROPERTY BV.createdDate DATETIME (MANDATORY TRUE, default sysdate("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+CREATE PROPERTY BV.updatedDate DATETIME (MANDATORY FALSE);
+
+CREATE CLASS User EXTENDS BV;
+CREATE SEQUENCE userIdSequence TYPE ORDERED;
+
+CREATE PROPERTY User.id LONG (MANDATORY TRUE, default "sequence('userIdSequence').next()");
+CREATE PROPERTY User.name STRING (MANDATORY TRUE, MIN 4, MAX 50);
+CREATE INDEX User.id on User(id) UNIQUE;
