@@ -17,8 +17,7 @@ RUN apk add --update tar curl openssl \
 RUN mkdir /orientdb && \
   wget  $ORIENTDB_DOWNLOAD_URL -O orientdb-community-spatial-$ORIENTDB_VERSION.tar.gz \
   && tar -xvzf orientdb-community-spatial-$ORIENTDB_VERSION.tar.gz -C /orientdb --strip-components=1 \
-  && rm orientdb-community-spatial-$ORIENTDB_VERSION.tar.gz \
-  && rm -rf /orientdb/databases/*
+  && rm orientdb-community-spatial-$ORIENTDB_VERSION.tar.gz
 
 
 ENV PATH /orientdb/bin:$PATH

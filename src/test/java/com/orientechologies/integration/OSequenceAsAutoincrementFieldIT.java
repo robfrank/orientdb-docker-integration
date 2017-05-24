@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 /**
  * Created by frank on 17/05/2017.
  */
-public class OSequenceAsAutoincrementFieldIT extends OSingleOrientDBServerBaseIT {
+public class OSequenceAsAutoincrementFieldIT extends OSingleOrientDBServerWithDatabasePerTestMethodBaseIT {
 
   @Before
   public void setUp() throws Exception {
