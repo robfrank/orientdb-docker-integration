@@ -49,7 +49,6 @@ public class ODMLIT extends OSingleOrientDBServerWithDatabasePerTestMethodBaseIT
     OResultSet resultSet = db.query("SELECT FROM Person order by birthDay DESC ");
 
     resultSet.vertexStream()
-
         .forEach(p -> System.out.println(p.toJSON()));
 
     resultSet.close();
