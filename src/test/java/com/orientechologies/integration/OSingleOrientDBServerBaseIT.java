@@ -20,29 +20,29 @@ import java.nio.file.Paths;
  */
 public abstract class OSingleOrientDBServerBaseIT {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(OSingleOrientDBServerBaseIT.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OSingleOrientDBServerBaseIT.class);
 
-  @ClassRule
-  public static GenericContainer container =
-      new GenericContainer(new ImageFromDockerfile("orientdb/orietdb-it", false)
-          .withFileFromPath("Dockerfile", Paths.get("./docker/Dockerfile"))
+    @ClassRule
+    public static GenericContainer container =
+            new GenericContainer(new ImageFromDockerfile("orientdb/orientdb-it", false)
+                    .withFileFromPath("Dockerfile", Paths.get("./docker/Dockerfile"))
 
-      )
-          .withEnv("ORIENTDB_ROOT_PASSWORD", "root")
-          .withExposedPorts(2480, 2424)
-          .waitingFor(Wait.forListeningPort());
+            )
+                    .withEnv("ORIENTDB_ROOT_PASSWORD", "root")
+                    .withExposedPorts(2480, 2424)
+                    .waitingFor(Wait.forListeningPort());
 
-  @Rule
-  public TestName name = new TestName();
+    @Rule
+    public TestName name = new TestName();
 
-  protected OrientDB      orientDB;
-  protected ODatabasePool pool;
+    protected OrientDB orientDB;
+    protected ODatabasePool pool;
 
-  @BeforeClass
-  public static void beforeClass() throws Exception {
-    System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
-    Slf4jLogConsumer logConsumer = new Slf4jLogConsumer(LOGGER);
-    container.followOutput(logConsumer);
-  }
+    @BeforeClass
+    public static void beforeClass() throws Exception {
+        System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
+        Slf4jLogConsumer logConsumer = new Slf4jLogConsumer(LOGGER);
+        container.followOutput(logConsumer);
+    }
 
 }
